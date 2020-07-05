@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/cart_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/cart_responsive.css')}}">
-
+@include('layouts.menubar')
 	<!-- Cart -->
 
 	<div class="cart_section">
@@ -100,7 +100,7 @@
 
 						<div class="cart_buttons">
 							<button type="button" class="button cart_button_clear">Remove All</button>
-							<a href="{{route('user.checkout')}}" class="button cart_button_checkout">Checkout</a>
+							<a href="{{route('payment.step')}}" class="button cart_button_checkout">Final Step</a>
 						</div>
 					</div>
 				</div>

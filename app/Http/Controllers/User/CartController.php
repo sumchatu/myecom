@@ -130,4 +130,14 @@ class CartController extends Controller
             );
         return Redirect()->back()->with($notification);
     }
+
+    public function paymentPage() {
+        $category = Category::orderBy('category_name','ASC')->get();
+        $setting = Setting::first();
+
+        $cart = Cart::Content();
+
+        return view('pages.payment',compact('cart','category','setting'));
+
+    }
 }

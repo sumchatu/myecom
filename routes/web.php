@@ -66,9 +66,22 @@ Route::get('user/checkout','User\CartController@checkout')->name('user.checkout'
 Route::post('user/apply/coupon','User\CartController@coupon')->name('apply.coupon');
 Route::get('user/coupon/remove','User\CartController@removeCoupon')->name('coupon.remove');
 
+Route::post('/product/add/cart','User\ProductController@addToCart')->name('product.cart');
+
+//Payment Steps
+Route::get('payment/page','User\CartController@paymentPage')->name('payment.step');
+Route::post('user/payment/process','User\PaymentController@payment')->name('payment.process');
+Route::post('user/stripe/payment','User\PaymentController@stripePayment')->name('stripe.payment');
+
+//Product details
 Route::get('/product/details/{id}/{product_name}','User\ProductController@productDetails');
+
+//Subcategory wise products
+Route::get('/subcat/products/{subcat_id}','User\ProductController@subcatProducts')->name('subcat.products');
+
+//Category wise products
+Route::get('/category/products/{category_id}','User\ProductController@categoryProducts')->name('category.products');
 
 // --- For getting the product details by Ajax from index-page for quick view of product
 Route::get('/product/quick/details/{id}','User\ProductController@productQuickDetails');
 
-Route::post('/product/add/cart','User\ProductController@addToCart')->name('product.cart');

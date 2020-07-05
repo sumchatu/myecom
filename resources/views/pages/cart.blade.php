@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/cart_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/cart_responsive.css')}}">
-
+@include('layouts.menubar')
 	<!-- Cart -->
 
 	<div class="cart_section">

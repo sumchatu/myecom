@@ -4,6 +4,8 @@
 
 @include('layouts.menubar')
 
+@include('layouts.slider')
+
 <div class="characteristics">
         <div class="container">
             <div class="row">

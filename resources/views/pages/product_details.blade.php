@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_responsive.css')}}">
-
+@include('layouts.menubar')
     	<!-- Single Product -->
 
 	<div class="single_product">

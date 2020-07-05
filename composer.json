@@ -14,8 +14,11 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^6.0",
         "laravel/helpers": "^1.2",
+        "laravel/passport": "7.5.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^6.1"
+        "laravelcollective/html": "^6.1",
+        "paragonie/random_compat": "2.*",
+        "stripe/stripe-php": "^7.39"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
