@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Admin\Newsletter;
 use App\Model\Admin\Category;
 use App\Model\Admin\Product;
+use App\Model\User\Order;
 
 class FrontController extends Controller
 {
@@ -33,5 +34,21 @@ class FrontController extends Controller
             'alert-type'=>'success'
             );
         return Redirect()->back()->with($notification);
+    }
+
+    // For Tracking the Order
+    public function trackOrder(Request $request)
+    {
+        $category = Category::orderBy('category_name','ASC')->get();
+        $track = Order::where('status_code',$request->code)->first();
+        if($track){
+            return view('pages.tracking',compact('track','category'));
+        }else{
+            $notification=array(
+                'messege'=>'Status Code is Invalid',
+                'alert-type'=>'error'
+            );
+            return Redirect()->back()->with($notification);
+        }
     }
 }

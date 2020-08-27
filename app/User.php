@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 use App\Model\User\Wishlist;
+use App\Model\User\Order;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -42,5 +43,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function wishlistedProducts(){
             return $this->hasMany(Wishlist::class);
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }

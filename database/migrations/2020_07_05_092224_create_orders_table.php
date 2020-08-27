@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->string('date')->nullable();
             $table->string('month')->nullable();
             $table->string('year')->nullable();
+            $table->string('status_code')->nullable();
             $table->string('status')->nullable()->default(0);
             $table->timestamps();
         });

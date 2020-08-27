@@ -7,6 +7,7 @@ use Auth;
 use App\Model\Admin\Category;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Model\User\Order;
 class HomeController extends Controller
 {
     /**
@@ -27,7 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         $category = Category::orderBy('category_name','ASC')->get();
-        return view('home',compact('category'));
+        $userId = Auth::id();
+        $orders = Order::where('user_id',$userId)->orderBy('id','desc')->get();
+        return view('home',compact('category','orders'));
     }
 
     public function changePassword(){

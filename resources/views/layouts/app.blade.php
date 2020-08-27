@@ -35,8 +35,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png')}}" alt=""></div>+38 068 005 3570</div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png')}}" alt=""></div>{{get_settings()->phone_1}}</div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png')}}" alt=""></div><a href="">{{get_settings()->email}}</a></div>
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
@@ -69,6 +69,9 @@
                                             <li><a href="#">Others</a></li>
                                         </ul>
                                     </li>
+                                    <li>
+                                        <a href="" data-toggle="modal" data-target="#exampleModal">My Order Tracking</a>
+                                    </li>
                                 </ul>
                                 @endguest
                                
@@ -88,7 +91,7 @@
                     <!-- Logo -->
                     <div class="col-lg-2 col-sm-3 col-3 order-1">
                         <div class="logo_container">
-                            <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('public/frontend/images/logo.png')}}" alt=""></a></div>
+                            <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('public/media/logo/'.get_settings()->logo)}}" alt=""></a></div>
                         </div>
                     </div>
 
@@ -104,7 +107,7 @@
                                                 <span class="custom_dropdown_placeholder clc">All Categories</span>
                                                 <i class="fas fa-chevron-down"></i>
                                                 <ul class="custom_list clc">
-                                                    @foreach($category as $cat)
+                                                    @foreach(get_categories() as $cat)
                                                     <li><a class="clc" href="#">{{$cat->category_name}}</a></li>
                                                     @endforeach
                                                 </ul>
@@ -171,21 +174,19 @@
                 <div class="col-lg-3 footer_col">
                     <div class="footer_column footer_contact">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">OneTech</a></div>
+                            <div class="logo"><a href="#">{{get_settings()->shop_name}}</a></div>
                         </div>
                         <div class="footer_title">Got Question? Call Us 24/7</div>
-                        <div class="footer_phone">+38 068 005 3570</div>
+                        <div class="footer_phone">{{get_settings()->phone_2}}</div>
                         <div class="footer_contact_text">
-                            <p>17 Princess Road, London</p>
-                            <p>Grester London NW18JR, UK</p>
+                            <p>{{get_settings()->address}}</p>
                         </div>
                         <div class="footer_social">
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                                <li><a target="_blank" href="{{get_settings()->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a target="_blank" href="{{get_settings()->twitter}}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a target="_blank" href="{{get_settings()->youtube}}"><i class="fab fa-youtube"></i></a></li>
+                                <li><a target="_blank" href="{{get_settings()->instagram}}"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -264,6 +265,30 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </div>
+</div>
+
+<!-- Order Tracking Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Status Code</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <form action="{{route('order.tracking')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <label>Status Code</label>
+                    <input type="text" name="code" class="form-control" placeholder="Your Order Status Code" required="required">
+                </div>
+                <button class="btn btn-danger" type="submit">Track Now</buton>
+            </form>
+        </div>
+    </div>
+  </div>
 </div>
 
 <script src="{{ asset('public/frontend/js/jquery-3.3.1.min.js')}}"></script>

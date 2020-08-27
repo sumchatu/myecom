@@ -106,6 +106,39 @@
         </ul>
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+            <span class="menu-item-label">Orders</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{ route('admin.neworder',0)}}" class="nav-link">New Order</a></li>
+          <li class="nav-item"><a href="{{ route('admin.neworder',1)}}" class="nav-link">Accept Payment</a></li>
+          <li class="nav-item"><a href="{{ route('admin.neworder',2)}}" class="nav-link">Process Delivery</a></li>
+          <li class="nav-item"><a href="{{ route('admin.neworder',3)}}" class="nav-link">Delivery Success</a></li>
+          <li class="nav-item"><a href="{{ route('admin.neworder',5)}}" class="nav-link">Cancelled Order</a></li>
+        </ul>
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
+            <span class="menu-item-label">Reports</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('today.order')}}" class="nav-link">Today Order</a></li>
+          <li class="nav-item"><a href="{{route('today.delivery')}}" class="nav-link">Today Delivery</a></li>
+          <li class="nav-item"><a href="{{route('this.month')}}" class="nav-link">This Month</a></li>
+          <li class="nav-item"><a href="{{route('search.report')}}" class="nav-link">Search Report</a></li>
+        </ul>
+        <a href="{{route('settings.index')}}" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
+            <span class="menu-item-label">Site Settings</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
             <span class="menu-item-label">Others</span>
             <i class="menu-item-arrow fa fa-angle-down"></i>

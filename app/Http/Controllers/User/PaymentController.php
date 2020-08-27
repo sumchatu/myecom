@@ -76,6 +76,7 @@ class PaymentController extends Controller
             'date'=>date('d-m-y'),
             'month'=>date('F'),
             'year'=>date('Y'),
+            'status_code'=>mt_rand(100000,999999),
             'status'=>0
         ];
         $orderId = Order::insertGetId($order);

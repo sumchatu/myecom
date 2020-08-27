@@ -47,6 +47,21 @@ Route::resource('admin/product', 'Admin\Product\ProductController');
 Route::get('admin/product/active-deactive/{product_id}', 'Admin\Product\ProductController@activateDeactivateProduct')->name('product.activeDeactive');
 Route::post('admin/product/file-update','Admin\Product\ProductController@fileUpdate')->name('product.file.update');
 
+// All orders handling by Admin
+Route::get('admin/get/orders/{status}','Admin\OrderController@newOrder')->name('admin.neworder');
+Route::get('admin/view/order-details/{orderId}','Admin\OrderController@orderDetails')->name('admin.orderDetails');
+Route::get('admin/order/action/{orderId}/{action}','Admin\OrderController@orderAction')->name('adminOrder.action');
+
+// All Order related Reports fetching from Admin
+Route::get('admin/today/order','Admin\ReportController@todayOrder')->name('today.order');
+Route::get('admin/today/delivery','Admin\ReportController@todayDelivery')->name('today.delivery');
+Route::get('admin/this/month','Admin\ReportController@thisMonth')->name('this.month');
+Route::get('admin/report/search','Admin\ReportController@search')->name('search.report');
+Route::post('admin/report/search/month-year','Admin\ReportController@monthYear')->name('search.monthYear');
+Route::post('admin/report/search/date','Admin\ReportController@date')->name('search.date');
+
+//Site Setting
+Route::resource('admin/site/settings','Admin\SettingController')->except(['create','show','destroy']);
 
   /// Frontend-All-Routes
 // Subscribing Save
@@ -84,4 +99,6 @@ Route::get('/category/products/{category_id}','User\ProductController@categoryPr
 
 // --- For getting the product details by Ajax from index-page for quick view of product
 Route::get('/product/quick/details/{id}','User\ProductController@productQuickDetails');
+
+Route::post('/order/tracking','FrontController@trackOrder')->name('order.tracking');
 
